@@ -9,9 +9,15 @@ const LinkedList = () => {
   let headVal = null;
 
   function prepend(value) {
-    const newHead = node();
-    newHead.value = value;
-    headVal = newHead;
+    const newNode = node();
+    newNode.value = value;
+
+    if (headVal === null) {
+      headVal = newNode;
+    }
+
+    newNode.nextNode = headVal;
+    headVal = newNode;
   }
 
   function head() {
@@ -24,3 +30,7 @@ const LinkedList = () => {
 const list = LinkedList();
 
 list.prepend("test");
+list.prepend("B");
+list.prepend("C");
+
+console.log(list.head());
