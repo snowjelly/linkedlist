@@ -6,25 +6,25 @@ const node = () => {
 };
 
 const LinkedList = () => {
-  let headVal = null;
+  let headVal = node();
 
   function prepend(value) {
     const newNode = node();
     newNode.value = value;
 
-    if (headVal === null) {
-      headVal = newNode;
-    }
-
     newNode.nextNode = headVal;
     headVal = newNode;
+  }
+
+  function append(value) {
+    let tmp = headVal;
   }
 
   function head() {
     return headVal;
   }
 
-  return { prepend, head };
+  return { prepend, head, append };
 };
 
 const list = LinkedList();
@@ -32,5 +32,6 @@ const list = LinkedList();
 list.prepend("test");
 list.prepend("B");
 list.prepend("C");
+console.log(list.append("D"));
 
 console.log(list.head());
