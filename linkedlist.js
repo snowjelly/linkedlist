@@ -32,7 +32,24 @@ const LinkedList = () => {
     return headVal;
   }
 
-  return { prepend, head, append };
+  function size() {
+    let tmp = headVal;
+    let counter = 1;
+    if (tmp.value === null) {
+      counter = 0;
+      return counter;
+    }
+    while (tmp.nextNode !== null) {
+      if (tmp.nextNode.value === null) {
+        break;
+      }
+      tmp = tmp.nextNode;
+      counter += 1;
+    }
+    return counter;
+  }
+
+  return { prepend, head, append, size };
 };
 
 const list = LinkedList();
@@ -42,5 +59,3 @@ list.prepend("B");
 list.prepend("C");
 list.append("D");
 list.append("E");
-
-console.log(list.head().nextNode.nextNode);
