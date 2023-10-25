@@ -61,7 +61,43 @@ const LinkedList = () => {
     return tmp;
   }
 
-  return { prepend, head, append, size, tail };
+  function at(index) {
+    let tmp = headVal;
+    let counter;
+    const sizeVal = size();
+    const length = sizeVal - 1;
+
+    if (length === -1) {
+      return new Error("The linked list must not be empty");
+    }
+
+    if (index > length) {
+      return new Error(
+        `Index specified is too large. The tail is at index ${length}`
+      );
+    }
+
+    if (index < 0) {
+      return new Error("Index cannot be less than 0");
+    }
+
+    if (tmp.value === null) {
+      counter = 0;
+      return counter;
+    } else {
+      counter = 1;
+    }
+
+    while (counter !== sizeVal) {
+      const indexVal = index + 1;
+      if (counter === indexVal) return tmp;
+      tmp = tmp.nextNode;
+      counter += 1;
+      if (counter === indexVal) return tmp;
+    }
+  }
+
+  return { prepend, head, append, size, tail, at };
 };
 
 const list = LinkedList();
@@ -71,3 +107,5 @@ list.prepend("B");
 list.prepend("C");
 list.append("D");
 list.append("E");
+
+console.log(list.at(0));
