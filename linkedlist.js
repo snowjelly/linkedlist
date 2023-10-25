@@ -119,7 +119,27 @@ const LinkedList = () => {
     return prevTail;
   }
 
-  return { prepend, head, append, size, tail, at, pop };
+  function contains(value) {
+    let tmp = headVal;
+    let counter;
+    const sizeVal = size();
+
+    if (tmp.value === null) {
+      counter = 0;
+    } else {
+      counter = 1;
+    }
+
+    while (counter !== sizeVal) {
+      if (tmp.value === value) return true;
+      tmp = tmp.nextNode;
+      counter += 1;
+      if (tmp.value === value) return true;
+    }
+    return false;
+  }
+
+  return { prepend, head, append, size, tail, at, pop, contains };
 };
 
 const list = LinkedList();
