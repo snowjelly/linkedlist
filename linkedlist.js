@@ -97,7 +97,29 @@ const LinkedList = () => {
     }
   }
 
-  return { prepend, head, append, size, tail, at };
+  function pop() {
+    const sizeVal = size();
+
+    if (sizeVal === 0) {
+      return new Error("List must not be empty");
+    }
+
+    if (sizeVal === 1) {
+      const prevTail = headVal;
+      headVal = node();
+      return prevTail;
+    }
+
+    const tailIndex = sizeVal - 1;
+    const newTailIndex = tailIndex - 1;
+    const newTail = at(newTailIndex);
+    const prevTail = newTail.nextNode;
+    newTail.nextNode = null;
+
+    return prevTail;
+  }
+
+  return { prepend, head, append, size, tail, at, pop };
 };
 
 const list = LinkedList();
@@ -107,5 +129,3 @@ list.prepend("B");
 list.prepend("C");
 list.append("D");
 list.append("E");
-
-console.log(list.at(0));
