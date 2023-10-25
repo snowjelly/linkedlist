@@ -212,6 +212,27 @@ const LinkedList = () => {
     return toString();
   }
 
+  function removeAt(index) {
+    if (index > size() - 1 || index < 0) {
+      return new Error("Index must be of a valid length");
+    }
+
+    if (index === size() - 1) {
+      return pop();
+    }
+
+    const nextNode = at(index + 1);
+    if (index === 0) {
+      headVal = nextNode;
+      return;
+    }
+
+    const tmp = at(index);
+    const prevNode = at(index - 1);
+    prevNode.nextNode = nextNode;
+    return tmp;
+  }
+
   return {
     prepend,
     head,
@@ -224,6 +245,7 @@ const LinkedList = () => {
     find,
     toString,
     insertAt,
+    removeAt,
   };
 };
 
