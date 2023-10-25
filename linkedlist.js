@@ -34,11 +34,15 @@ const LinkedList = () => {
 
   function size() {
     let tmp = headVal;
-    let counter = 1;
+    let counter;
+
     if (tmp.value === null) {
       counter = 0;
       return counter;
+    } else {
+      counter = 1;
     }
+
     while (tmp.nextNode !== null) {
       if (tmp.nextNode.value === null) {
         break;
