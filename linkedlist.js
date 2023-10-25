@@ -166,7 +166,43 @@ const LinkedList = () => {
     }
   }
 
-  return { prepend, head, append, size, tail, at, pop, contains, find };
+  function toString() {
+    let tmp = headVal;
+    let counter;
+    let string = "";
+    const sizeVal = size();
+
+    if (sizeVal === 0) {
+      return new Error("List must not be empty");
+    }
+
+    if (tmp.value === null) {
+      counter = 0;
+    } else {
+      counter = 1;
+    }
+
+    while (counter !== sizeVal + 1) {
+      string = string.concat(`( ${tmp.value} ) -> `);
+      tmp = tmp.nextNode;
+      counter += 1;
+    }
+
+    return string.concat("null");
+  }
+
+  return {
+    prepend,
+    head,
+    append,
+    size,
+    tail,
+    at,
+    pop,
+    contains,
+    find,
+    toString,
+  };
 };
 
 const list = LinkedList();
