@@ -139,7 +139,34 @@ const LinkedList = () => {
     return false;
   }
 
-  return { prepend, head, append, size, tail, at, pop, contains };
+  function find(value) {
+    if (!contains(value)) {
+      return null;
+    }
+    let tmp = headVal;
+    let counter;
+    const sizeVal = size();
+    const length = sizeVal - 1;
+    let index;
+
+    if (tmp.value === null) {
+      counter = 0;
+    } else {
+      counter = 1;
+    }
+
+    index = counter - 1;
+
+    while (counter !== sizeVal) {
+      if (tmp.value === value) return index;
+      tmp = tmp.nextNode;
+      counter += 1;
+      index = counter - 1;
+      if (tmp.value === value) return index;
+    }
+  }
+
+  return { prepend, head, append, size, tail, at, pop, contains, find };
 };
 
 const list = LinkedList();
