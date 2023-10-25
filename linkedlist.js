@@ -49,7 +49,15 @@ const LinkedList = () => {
     return counter;
   }
 
-  return { prepend, head, append, size };
+  function tail() {
+    let tmp = headVal;
+    while (tmp.nextNode !== null) {
+      tmp = tmp.nextNode;
+    }
+    return tmp;
+  }
+
+  return { prepend, head, append, size, tail };
 };
 
 const list = LinkedList();
