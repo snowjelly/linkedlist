@@ -18,7 +18,10 @@ const LinkedList = () => {
 
   function append(value) {
     let tmp = headVal;
-    while (tmp.nextNode.nextNode !== null) {
+    while (tmp.nextNode !== null) {
+      if (tmp.nextNode.value === null) {
+        break;
+      }
       tmp = tmp.nextNode;
     }
     tmp.nextNode = node();
@@ -40,4 +43,4 @@ list.prepend("C");
 list.append("D");
 list.append("E");
 
-console.log(list.head().nextNode);
+console.log(list.head().nextNode.nextNode);
