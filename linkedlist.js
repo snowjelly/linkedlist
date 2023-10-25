@@ -191,6 +191,27 @@ const LinkedList = () => {
     return string.concat("null");
   }
 
+  function insertAt(value, index) {
+    const newNode = node();
+    const prevNode = at(index - 1);
+    const nextNode = at(index);
+
+    if (index === 0) {
+      prepend(value);
+    }
+
+    if (index >= size() || index < 0) {
+      return new Error("Index must be of a valid length");
+    }
+
+    newNode.value = value;
+    newNode.nextNode = nextNode;
+
+    prevNode.nextNode = newNode;
+
+    return toString();
+  }
+
   return {
     prepend,
     head,
@@ -202,6 +223,7 @@ const LinkedList = () => {
     contains,
     find,
     toString,
+    insertAt,
   };
 };
 
